@@ -1,0 +1,33 @@
+DROP TABLE IF EXISTS employees;
+DROP TABLE IF EXISTS romance;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS parties;
+
+CREATE TABLE employees (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    department VARCHAR(50) NOT NULL,
+    role VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE romance (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person1 INTEGER NOT NULL,
+    person2 INTEGER NOT NULL,
+    FOREIGN KEY (person1) REFERENCES employees (id),
+    FOREIGN KEY (person2) REFERENCES employees (id)
+);
+
+CREATE TABLE reviews (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    employee_id INTEGER NOT NULL,
+    score NUMERIC(2,1) NOT NULL,
+    FOREIGN KEY (employee_id) REFERENCES employees (id)
+);
+
+CREATE TABLE parties (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    budget NUMERIC(8,2) NOT NULL,
+    is_onsite BOOLEAN DEFAULT 1
+);
