@@ -12,6 +12,6 @@ CREATE TABLE customers (
 
 CREATE TABLE coffee_orders (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    is_redeemed BOOLEAN DEFAULT 'not redeemed',
+    is_redeemed BOOLEAN DEFAULT 0,
     ordered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
